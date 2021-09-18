@@ -217,3 +217,43 @@ function remove_parent_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'remove_parent_styles', 11 );
+
+/* Register editor stylesheet for theme.*/
+
+function wpdocs_theme_add_editor_styles() {
+    add_editor_style( 'custom-editor-style.css' );
+}
+add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
+
+/*enqueue font*/
+
+function wpb_add_google_fonts() {
+	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap', array(), null );
+}
+add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
+
+/*enqueue JS*/
+
+function add_js_script() {
+	wp_enqueue_script( 'script', get_stylesheet_directory_uri() . '/js/script.js', array ( 'jquery' ), 1.1, true);
+}
+add_action( 'wp_enqueue_scripts', 'add_js_script' );
+
+/*dequeue Deshicons for non admin users*/
+
+function wpdocs_dequeue_dashicon() {
+	if (current_user_can( 'update_core' )) {
+		return;
+	}
+	wp_deregister_style('dashicons');
+}
+add_action( 'wp_enqueue_scripts', 'wpdocs_dequeue_dashicon' );
+
+/*dequeue parent google fonts*/
+
+function parent_remove_google_fonts() {
+    wp_dequeue_style('seedlet-fonts');
+    wp_deregister_style('seedlet-fonts');
+}
+
+add_action('wp_enqueue_scripts', 'parent_remove_google_fonts', 100);
