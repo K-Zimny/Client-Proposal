@@ -1,3 +1,11 @@
+=== Client Starter ===
+
+By: KZ
+
+== Description ==
+
+Theme built upon seedlet and blank canvas.
+
 === Blank Canvas ===
 Contributors: Automattic
 Requires at least: 5.0
