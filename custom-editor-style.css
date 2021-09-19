@@ -46,6 +46,12 @@ h1::before {
     border: 1px solid gray;
 } 
 
+/* Cover styles */
+
+/* .wp-block-cover__image-background {
+    opacity: .5;
+} */
+
 @media only screen and (min-width: 768px) {
 
     .wp-block {

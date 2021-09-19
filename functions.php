@@ -228,7 +228,7 @@ add_action( 'admin_init', 'wpdocs_theme_add_editor_styles' );
 /*enqueue font*/
 
 function wpb_add_google_fonts() {
-	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Source+Code+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap', array(), null );
+	wp_enqueue_style( 'wpb-google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap', array(), null );
 }
 add_action( 'wp_enqueue_scripts', 'wpb_add_google_fonts' );
 
@@ -239,7 +239,7 @@ function add_js_script() {
 }
 add_action( 'wp_enqueue_scripts', 'add_js_script' );
 
-/*dequeue Deshicons for non admin users*/
+/*dequeue Dashicons for non admin users*/
 
 function wpdocs_dequeue_dashicon() {
 	if (current_user_can( 'update_core' )) {
