@@ -257,3 +257,14 @@ function parent_remove_google_fonts() {
 }
 
 add_action('wp_enqueue_scripts', 'parent_remove_google_fonts', 100);
+
+/*enqueue Canvas Gauges*/
+
+// wp_register_script( 'gauge_js', 'https://cdnjs.cloudflare.com/ajax/libs/gauge.js/1.2.1/gauge.min.js', null, null, true );
+// wp_enqueue_script('gauge_js');
+
+wp_register_script( 'raphael_js', 'https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js', null, null, true );
+wp_enqueue_script('raphael_js');
+
+wp_register_script( 'justgage_js', 'https://cdnjs.cloudflare.com/ajax/libs/justgage/1.2.9/justgage.min.js', null, null, true );
+wp_enqueue_script('justgage_js');

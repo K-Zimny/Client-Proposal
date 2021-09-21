@@ -126,7 +126,7 @@ p {
 
 a {
   font-family: var(--global--font-text);
-  color: var(--global--color-text) !important;
+  color: var(--global--color-text);
   text-decoration: none;
   font-size: 22px;
 }
@@ -1076,4 +1076,16 @@ li {
   padding: 25px 0;
   filter: drop-shadow(2px 4px 6px black);
   max-height: 75vh;
+}
+
+/* ============================================================================================================================================================== */
+/* Performance Audit Page Styles */
+/* ============================================================================================================================================================== */
+
+#performanceAudit .gauge {
+  max-width: 300px;
+}
+
+.audit-container p {
+  display: none;
 }

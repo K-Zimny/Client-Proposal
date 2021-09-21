@@ -7,6 +7,10 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif !important;
 }
 
+#wpadminbar a.ab-item {
+  color: #fff !important;
+}
+
 /* Group block styles */
 
 .wp-block-group__inner-container.block-editor-block-list__layout {
