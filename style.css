@@ -60,10 +60,15 @@ Modified and used as a block pattern image.
 /* General Styles */
 /* ============================================================================================================================================================== */
 
+html {
+  overflow-x: hidden;
+}
+
 body {
   background: var(--global--color-background);
   color: var(--global--color-text);
   margin: 0;
+  overflow-x: hidden;
 }
 
 .hide-element {
@@ -95,6 +100,35 @@ img {
   height: 100%;
 }
 
+/* breadcrumbs */
+
+.breadcrumbs {
+  margin: 30px 0 5px;
+  font-family: var(--global--font-header);
+}
+
+/* wp file embed */
+
+.wp-block-file__embed {
+  height: 100vh !important;
+}
+
+/* header underline effect */
+
+.header-underline-effect {
+  position: relative;
+}
+
+.header-underline-effect::after {
+  position: absolute;
+  content: "";
+  height: 3px;
+  background: var(--global--color-primary);
+  left: -50vw;
+  right: 20%;
+  bottom: -10px;
+}
+
 /* ============================================================================================================================================================== */
 /* Typography */
 /* ============================================================================================================================================================== */
@@ -110,12 +144,14 @@ h2 {
   font-family: var(--global--font-header);
   color: var(--global--color-text) !important;
   font-size: 40px;
+  font-weight: 500;
 }
 
 h3 {
   font-family: var(--global--font-header);
   color: var(--global--color-text) !important;
   font-size: 30px;
+  font-weight: 500;
 }
 
 p {
@@ -137,6 +173,28 @@ li {
   font-size: 22px;
 }
 
+/********************** Typography Media Queries **********************/
+
+@media only screen and (max-width: 767px) {
+  h1 {
+    font-size: 35px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  p,
+  a,
+  li {
+    font-size: 16px;
+  }
+}
+
 /* ============================================================================================================================================================== */
 /* Widths */
 /* ============================================================================================================================================================== */
@@ -147,7 +205,8 @@ li {
 .fixed-1600-width,
 .fixed-1200-width,
 .fixed-900-width,
-.service-grid-width {
+.service-grid-width,
+footer {
   max-width: 1440px !important;
   width: 92% !important;
   margin-left: auto !important;
@@ -166,7 +225,8 @@ li {
   .fixed-site-width,
   .fixed-1200-width,
   .fixed-900-width,
-  .service-grid-width {
+  .service-grid-width,
+  footer {
     width: 85% !important;
   }
 
@@ -529,6 +589,10 @@ li {
   margin-bottom: 0 !important;
 }
 
+.margin-bottom-30 {
+  margin-bottom: 30px !important;
+}
+
 .margin-bottom-50 {
   margin-bottom: 50px !important;
 }
@@ -761,7 +825,7 @@ li {
 .dashboard-container > .wp-block-group__inner-container {
   display: flex;
   flex-basis: 50%;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
   min-height: 50vh;
@@ -794,8 +858,13 @@ li {
 
 #design-menu p {
   cursor: pointer;
-  font-size: 32px;
+  font-size: 36px;
   margin: 0;
+}
+
+#design-menu > .wp-block-group__inner-container > p:first-of-type {
+  text-decoration: underline var(--global--color-primary) 2px;
+  text-underline-offset: 10px;
 }
 
 #design-menu a {
@@ -873,50 +942,6 @@ li {
   bottom: -20px;
 }
 
-/* .dashboard-content-container
-  > .wp-block-group__inner-container
-  > .wp-block-group:first-of-type
-  > .wp-block-group__inner-container
-  p:first-of-type {
-  position: relative;
-}
-
-.dashboard-content-container
-  > .wp-block-group__inner-container
-  > .wp-block-group:first-of-type
-  > .wp-block-group__inner-container
-  p:first-of-type::before {
-  position: absolute;
-  content: "";
-  height: 3px;
-  background: var(--global--color-primary);
-  top: -20px;
-  left: -50vw;
-  right: -5%;
-}
-
-.dashboard-content-container
-  > .wp-block-group__inner-container
-  > .wp-block-group:first-of-type
-  > .wp-block-group__inner-container
-  p:last-of-type {
-  position: relative;
-}
-
-.dashboard-content-container
-  > .wp-block-group__inner-container
-  > .wp-block-group:first-of-type
-  > .wp-block-group__inner-container
-  p:last-of-type::before {
-  position: absolute;
-  content: "";
-  height: 3px;
-  background: var(--global--color-primary);
-  bottom: -20px;
-  left: -50vw;
-  right: -5%;
-} */
-
 /*********** logo img ***********/
 
 .dashboard-client-logo {
@@ -959,6 +984,49 @@ li {
 .dashboard-cta a:focus,
 .dashboard-cta a:active {
   transform-origin: center;
+}
+
+/********************** Dashboard Media Queries **********************/
+
+@media only screen and (max-width: 767px) {
+  /*********** container ***********/
+
+  .dashboard-container > .wp-block-group__inner-container {
+    flex-flow: column-reverse nowrap;
+  }
+
+  /*********** content container ***********/
+
+  /***** text styles *****/
+
+  .dashboard-content-container
+    > .wp-block-group__inner-container
+    > .wp-block-group
+    p {
+    height: auto;
+  }
+
+  #design-menu p {
+    font-size: 28px;
+  }
+
+  .dashboard a,
+  .dashboard a:visited {
+    font-size: 24px;
+  }
+
+  /*********** cta ***********/
+
+  /***** text styles *****/
+
+  .dashboard-cta a {
+    margin: 20px 0;
+  }
+
+  .dashboard-cta a {
+    font-size: 20px;
+    padding: 8px 25px;
+  }
 }
 
 /* ============================================================================================================================================================== */
@@ -1061,12 +1129,12 @@ li {
 /* XD Pages Styles */
 /* ============================================================================================================================================================== */
 
-.xd-iframe h1 {
-  font-size: 22px;
-}
-
-.xd-iframe {
+.xd-iframe
+  > .wp-block-group__inner-container
+  > .wp-block-group
+  > .wp-block-group__inner-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -1075,17 +1143,106 @@ li {
   max-width: 100%;
   padding: 25px 0;
   filter: drop-shadow(2px 4px 6px black);
-  max-height: 75vh;
+  max-height: 70vh;
 }
 
 /* ============================================================================================================================================================== */
 /* Performance Audit Page Styles */
 /* ============================================================================================================================================================== */
 
-#performanceAudit .gauge {
-  max-width: 300px;
+/* Flex containers */
+
+.audit-main-flex-container > .wp-block-group__inner-container {
+  display: flex;
+  flex-flow: row nowrap;
 }
 
-.audit-container p {
+.audit-main-flex-container
+  > .wp-block-group__inner-container
+  > .audit-container {
+  flex-basis: 75%;
+}
+
+.audit-flex-container > .wp-block-group__inner-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.audit-flex-container .audit-container {
+  flex-basis: 50%;
+  min-width: 300px;
+  padding: 25px 0;
+}
+
+.audit-main-flex-container .audit-container > .wp-block-group__inner-container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 100%;
+}
+
+/* gauge styles */
+
+#performanceAudit .gauge {
+  max-width: 300px;
+  margin-top: auto;
+  margin-top: 20px;
+}
+
+#performanceAudit #overallScore.gauge {
+  width: 100%;
+  max-width: 75%;
+}
+
+/* text styles */
+
+#performanceAudit h1 {
+  margin-top: 0;
+}
+
+#performanceAudit h2,
+#performanceAudit h3 {
+  margin: 0;
+  text-decoration: underline;
+}
+
+#overallScorePlaceholder p {
+  transform: scale(1.5);
+}
+
+#performanceAudit p {
+  margin: 10px 0;
+  /* text-decoration: underline; */
+}
+
+.audit-container > .wp-block-group__inner-container > .gauge p {
   display: none;
+}
+
+/* border styles */
+
+/* .audit-main-flex-container,
+.audit-main-flex-container .audit-container,
+.audit-flex-container .audit-container {
+  border: 1px solid var(--global--color-primary);
+} */
+
+/* ============================================================================================================================================================== */
+/* Footer */
+/* ============================================================================================================================================================== */
+
+footer p {
+  margin: 0 0 5px;
+  text-align: right;
+  position: relative;
+}
+
+footer p::after {
+  position: absolute;
+  content: "";
+  height: 2px;
+  background: var(--global--color-primary);
+  right: -50vw;
+  left: 75%;
+  top: -10px;
 }
